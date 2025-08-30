@@ -10,14 +10,13 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: {
       template: '%s | St. Pauli Bobrs',
-      default: 'St. Pauli Bobrs - Herz, Blut und Leidenschaft',
+      default: 'St. Pauli Bobrs',
     },
     description: 'Die offizielle Homepage der St. Pauli Bobrs - HERZ, BLUT UND LEIDENSCHAFT für den FC St. Pauli! Siamo Tutti Antifascisti.',
     keywords: 'St. Pauli, FC St. Pauli, Bobrs, Hamburg, Fußball, Fanclub, Antifaschismus',
     openGraph: {
       title: 'St. Pauli Bobrs',
       description: 'Die offizielle Homepage der St. Pauli Bobrs - HERZ, BLUT UND LEIDENSCHAFT für den FC St. Pauli!',
-      url: 'https://stpaulibobrs.de',
       siteName: 'St. Pauli Bobrs',
       locale: 'de_DE',
       type: 'website',

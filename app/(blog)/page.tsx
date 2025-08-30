@@ -101,7 +101,6 @@ function StPauliBobrsHomepage() {
               <h2 className="text-3xl md:text-5xl font-bold text-red-600 mb-4 md:mb-6 strokeme-medium scribble-underline" data-text="ABOUT US">
                 WER WIR SIND
               </h2>
-              <div className="w-24 h-1 bg-red-600 mx-auto mt-6"></div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
@@ -157,7 +156,6 @@ function StPauliBobrsHomepage() {
               <h2 className="text-3xl md:text-5xl font-bold text-red-500 mb-4 md:mb-6 strokeme-medium scribble-underline" data-text="LATEST NEWS">
                 LATEST NEWS
               </h2>
-              <div className="w-24 h-1 bg-red-500 mx-auto mt-6"></div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
@@ -213,7 +211,6 @@ function StPauliBobrsHomepage() {
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 strokeme-medium scribble-underline" data-text="GET IN TOUCH">
                 Kontakt
               </h2>
-              <div className="w-24 h-1 bg-red-600 mx-auto mt-6"></div>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
