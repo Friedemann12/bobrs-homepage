@@ -17,6 +17,7 @@ html {
   --st-pauli-black: #1a1a1a;
   --st-pauli-dark-brown: #2d1b0e;
   --st-pauli-grey: #2d2d2d;
+  --background-path: url('/background.png');
 }
 
 /* Base styles */
@@ -29,6 +30,8 @@ body {
   padding: 0;
   min-height: 100vh;
 }
+
+
 
 /* ===== HEADER & LOGO ===== */
 .header-rugged {

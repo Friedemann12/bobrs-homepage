@@ -7,11 +7,47 @@ import Image from "next/image";
 
 // Sanity imports entfernt - verwenden statischen Content für St. Pauli Bobrs
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// Function to get correct image path based on environment
+function getImagePath(filename: string): string {
+  // Check if we're in a static export (production build)
+  if (typeof window !== 'undefined') {
+    // Client-side: check if we're on a static site
+    const isStaticSite = window.location.pathname.includes('.html') || 
+                        window.location.pathname.endsWith('/') ||
+                        window.location.pathname === '/';
+    
+    if (isStaticSite) {
+      return `./${filename}`;
+    }
+  }
+  
+  // Default: use absolute path
+  return `/${filename}`;
+}
 
 // St. Pauli Bobrs Homepage Component
 function StPauliBobrsHomepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [imagePaths, setImagePaths] = useState({
+    logo: '/logo.png',
+    background: '/background.png'
+  });
+
+  useEffect(() => {
+    // Set image paths after component mounts
+    const logoPath = getImagePath('logo.png');
+    const backgroundPath = getImagePath('background.png');
+    
+    setImagePaths({
+      logo: logoPath,
+      background: backgroundPath
+    });
+    
+    // Also update CSS custom property for background
+    document.documentElement.style.setProperty('--background-path', `url(${backgroundPath})`);
+  }, []);
   
   return (
     <div className="relative min-h-screen">
@@ -20,7 +56,7 @@ function StPauliBobrsHomepage() {
         <div className="container mx-auto flex justify-between items-center">
           {/* Logo */}
           <div className="logo-container">
-            <Image src="/logo.png" alt="St. Pauli Bobrs Logo" width={50} height={50} />
+            <Image src={imagePaths.logo} alt="St. Pauli Bobrs Logo" width={50} height={50} />
             <div className="text-white text-xl md:text-2xl font-bold">ST. Pauli Bóbrs</div>
           </div>
           
@@ -54,7 +90,7 @@ function StPauliBobrsHomepage() {
       <div 
         className="fixed inset-0 z-0"
         style={{
-          backgroundImage: 'url(/background.png)',
+          backgroundImage: 'var(--background-path)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
