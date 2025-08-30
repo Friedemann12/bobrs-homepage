@@ -2,49 +2,25 @@ import "../globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import {
-  VisualEditing,
-  toPlainText,
-  type PortableTextBlock,
-} from "next-sanity";
+// next-sanity imports entfernt - nicht benötigt für statische Seite
 import { Inter } from "next/font/google";
-import { draftMode } from "next/headers";
-
-import AlertBanner from "./alert-banner";
-import PortableText from "./portable-text";
-
-import * as demo from "@/sanity/lib/demo";
-import { sanityFetch } from "@/sanity/lib/fetch";
-import { settingsQuery } from "@/sanity/lib/queries";
-import { resolveOpenGraphImage } from "@/sanity/lib/utils";
+// Sanity imports entfernt - St. Pauli Bobrs verwendet statischen Content
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await sanityFetch({
-    query: settingsQuery,
-    // Metadata should never contain stega
-    stega: false,
-  });
-  const title = settings?.title || demo.title;
-  const description = settings?.description || demo.description;
-
-  const ogImage = resolveOpenGraphImage(settings?.ogImage);
-  let metadataBase: URL | undefined = undefined;
-  try {
-    metadataBase = settings?.ogImage?.metadataBase
-      ? new URL(settings.ogImage.metadataBase)
-      : undefined;
-  } catch {
-    // ignore
-  }
   return {
-    metadataBase,
     title: {
-      template: `%s | ${title}`,
-      default: title,
+      template: '%s | St. Pauli Bobrs',
+      default: 'St. Pauli Bobrs - Herz, Blut und Leidenschaft',
     },
-    description: toPlainText(description),
+    description: 'Die offizielle Homepage der St. Pauli Bobrs - HERZ, BLUT UND LEIDENSCHAFT für den FC St. Pauli! Siamo Tutti Antifascisti.',
+    keywords: 'St. Pauli, FC St. Pauli, Bobrs, Hamburg, Fußball, Fanclub, Antifaschismus',
     openGraph: {
-      images: ogImage ? [ogImage] : [],
+      title: 'St. Pauli Bobrs',
+      description: 'Die offizielle Homepage der St. Pauli Bobrs - HERZ, BLUT UND LEIDENSCHAFT für den FC St. Pauli!',
+      url: 'https://stpaulibobrs.de',
+      siteName: 'St. Pauli Bobrs',
+      locale: 'de_DE',
+      type: 'website',
     },
   };
 }
@@ -55,54 +31,41 @@ const inter = Inter({
   display: "swap",
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const data = await sanityFetch({ query: settingsQuery });
-  const footer = data?.footer || [];
-  const { isEnabled: isDraftMode } = await draftMode();
-
   return (
     <html lang="en" className={`${inter.variable} bg-white text-black`}>
       <body>
         <section className="min-h-screen">
-          {isDraftMode && <AlertBanner />}
           <main>{children}</main>
-          <footer className="bg-accent-1 border-accent-2 border-t">
-            <div className="container mx-auto px-5">
-              {footer.length > 0 ? (
-                <PortableText
-                  className="prose-sm text-pretty bottom-0 w-full max-w-none bg-white py-12 text-center md:py-20"
-                  value={footer as PortableTextBlock[]}
-                />
-              ) : (
-                <div className="flex flex-col items-center py-28 lg:flex-row">
-                  <h3 className="mb-10 text-center text-4xl font-bold leading-tight tracking-tighter lg:mb-0 lg:w-1/2 lg:pr-4 lg:text-left lg:text-5xl">
-                    Built with Next.js.
-                  </h3>
-                  <div className="flex flex-col items-center justify-center lg:w-1/2 lg:flex-row lg:pl-4">
-                    <a
-                      href="https://nextjs.org/docs"
-                      className="mx-3 mb-6 border border-black bg-black py-3 px-12 font-bold text-white transition-colors duration-200 hover:bg-white hover:text-black lg:mb-0 lg:px-8"
-                    >
-                      Read Documentation
-                    </a>
-                    <a
-                      href="https://github.com/vercel/next.js/tree/canary/examples/cms-sanity"
-                      className="mx-3 font-bold hover:underline"
-                    >
-                      View on GitHub
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-          </footer>
         </section>
-        {isDraftMode && <VisualEditing />}
         <SpeedInsights />
+      <footer className="footer-torn-top py-8 px-6 relative z-50 mt-auto" style={{background: 'var(--st-pauli-dark-brown)'}}>
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            {/* Left Side - Antifascist Message */}
+            <div>
+              <p className="text-white text-xs">
+                Herz, Blut und Leidenschaft für den FC St. Pauli.
+              </p>
+            </div>
+            
+            <div className="text-right">
+              <p className="text-white text-sm mb-1">info@stpaulibobrs.de</p>
+              <p className="text-white text-sm mb-1">Hamburg, Germany</p>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-700 mt-6 pt-4 text-center">
+            <p className="text-white text-xs">
+              © 2025 St. Pauli Bobrs • Siamo Tutti Antifascisti
+            </p>
+          </div>
+        </div>
+      </footer>
       </body>
     </html>
   );

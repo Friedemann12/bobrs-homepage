@@ -1,27 +1,26 @@
-# A statically generated blog example using Next.js and Sanity
+# St. Pauli Bobrs Homepage
 
-![Screenshot of Sanity Studio using Presentation Tool to do Visual Editing](https://github.com/sanity-io/next.js/assets/81981/59ecd9d6-7a78-41c6-95f7-275f66fe3c9d)
+Die offizielle Homepage der St. Pauli Bobrs - HERZ, BLUT UND LEIDENSCHAFT für den FC St. Pauli!
 
-This starter is a statically generated blog that uses Next.js App Router for the frontend and [Sanity][sanity-homepage] to handle its content. It comes with a native Sanity Studio that offers features like real-time collaboration and visual editing with live updates using [Presentation][presentation].
-
-The Studio connects to Sanity Content Lake, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a blog or learn these technologies.
+Diese moderne, responsive Website wurde mit Next.js und Sanity CMS entwickelt und ist bereit für den produktiven Einsatz.
 
 ## Features
 
-- A performant, static blog with editable posts, authors, and site settings
-- TypeScript setup with [Sanity TypeGen](https://www.sanity.io/docs/sanity-typegen)
-- A native and customizable authoring environment, accessible on `yourblog.com/studio`
-- Real-time and collaborative content editing with fine-grained revision history
-- Side-by-side instant content preview that works across your whole site
-- Support for block content and the most advanced custom fields capability in the industry
-- Incremental Static Revalidation; no need to wait for a rebuild to publish new content
-- Unsplash integration setup for easy media management
-- [Sanity AI Assist preconfigured for image alt text generation](https://www.sanity.io/docs/ai-assist?utm_source=github.com&utm_medium=organic_social&utm_campaign=ai-assist&utm_content=)
-- Out of the box support for [Vercel Visual Editing](https://www.sanity.io/blog/visual-editing-sanity-vercel?utm_source=github.com&utm_medium=referral&utm_campaign=may-vercel-launch).
+### Design & User Experience
+- 🎨 **Modernes, roughes Design** im St. Pauli-Stil mit roughen Elementen
+- 📱 **100% Mobile Responsive** - Perfekt optimiert für alle Geräte
+- ⚡ **Blitzschnelle Performance** durch statische Generierung
+- 🎯 **Smooth Scrolling Navigation** für bessere UX
+- 💀 **St. Pauli Branding** mit roughem Look und torn paper effects
 
-## Demo
+### Technische Features
+- TypeScript Setup mit [Sanity TypeGen](https://www.sanity.io/docs/sanity-typegen)
+- Content Management über Sanity Studio (`/studio`)
+- Echtzeit-Vorschau beim Bearbeiten von Inhalten
+- Incremental Static Revalidation für sofortige Updates
+- SEO-optimiert und performance-fokussiert
 
-### [https://next-blog.sanity.build](https://next-blog.sanity.build)
+## Deployment
 
 ## Deploy your own
 
